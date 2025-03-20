@@ -17,7 +17,7 @@ jobs:
         name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Set up QEMU
@@ -34,4 +34,4 @@ jobs:
           platforms: |
             linux/amd64
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/wordpress:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/wordpress:latest
