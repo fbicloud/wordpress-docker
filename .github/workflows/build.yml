@@ -32,8 +32,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           call: check
-          context: docker
-          file: docker/Dockerfile
+          context: .
+          file: ./docker/Dockerfile
           platforms: |
             linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
