@@ -19,6 +19,9 @@ jobs:
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/wordpress
 
+      - name: Set Up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -36,7 +39,7 @@ jobs:
           file: ./docker/Dockerfile
           platforms: |
             linux/amd64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           annotations: ${{ steps.meta.outputs.annotations }}
           provenance: true
